@@ -1,0 +1,31 @@
+/* Localizable strings — English scaffold for Hali Cinema */
+
+"Trending Today" = "Trending Today";
+"Popular Movies" = "Popular Movies";
+"Top Rated" = "Top Rated";
+"Upcoming" = "Upcoming";
+"Now Playing" = "Now Playing";
+"Popular TV Shows" = "Popular TV Shows";
+"Search movies" = "Search movies";
+"No favorites yet" = "No favorites yet";
+"Save movies you love — they'll stay available offline." = "Save movies you love — they'll stay available offline.";
+"Couldn't load home" = "Couldn't load home";
+"Couldn't load movie" = "Couldn't load movie";
+"Try Again" = "Try Again";
+"You're offline" = "You're offline";
+"Watch Trailer" = "Watch Trailer";
+"Recommendations" = "Recommendations";
+"Similar Movies" = "Similar Movies";
+"Overview" = "Overview";
+"Details" = "Details";
+"Cast" = "Cast";
+"Trailer" = "Trailer";
+"Gallery" = "Gallery";
+"Reviews" = "Reviews";
+"Collection" = "Collection";
+"No results" = "No results";
+"Try a different title, actor, or keyword." = "Try a different title, actor, or keyword.";
+"Recent" = "Recent";
+"Popular Searches" = "Popular Searches";
+"Clear" = "Clear";
+"Voice search coming soon" = "Voice search coming soon";

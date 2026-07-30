@@ -15,6 +15,7 @@ struct MovieDetailView: View {
     @State private var trailerURL: URL?
     @State private var selectedGalleryPath: String?
     @State private var scrollOffset: CGFloat = 0
+    @State private var didAppear = false
 
     var body: some View {
         Group {
@@ -25,6 +26,15 @@ struct MovieDetailView: View {
             }
         }
         .haliScreenBackground()
+        .onAppear {
+            didAppear = true
+        }
+        .onDisappear {
+            // Fired when popping back from this detail — triggers frequency-capped interstitial.
+            if didAppear {
+                environment.interstitialAds.handleMovieDetailDismissed()
+            }
+        }
         .task {
             if viewModel == nil {
                 let vm = MovieDetailViewModel(
@@ -64,15 +74,15 @@ struct MovieDetailView: View {
             }
         case .failed(let message):
             ErrorStateView(
-                title: String(localized: "Couldn't load movie"),
+                title: "Couldn't load movie",
                 message: message,
                 onRetry: { Task { await viewModel.load() } }
             )
         case .empty:
             EmptyStateView(
                 systemImage: "film",
-                title: String(localized: "Movie not found"),
-                message: String(localized: "This title may have been removed.")
+                title: "Movie not found",
+                message: "This title may have been removed."
             )
         case .loaded:
             if let detail = viewModel.detail {
@@ -103,10 +113,10 @@ struct MovieDetailView: View {
                     collectionSection(collection)
                 }
                 if let recs = detail.recommendations?.results, !recs.isEmpty {
-                    recommendationLinks(title: String(localized: "Recommendations"), movies: recs)
+                    recommendationLinks(title: "Recommendations", movies: recs)
                 }
                 if let similar = detail.similar?.results, !similar.isEmpty {
-                    recommendationLinks(title: String(localized: "Similar Movies"), movies: similar)
+                    recommendationLinks(title: "Similar Movies", movies: similar)
                 }
             }
             .padding(.bottom, 48)
@@ -206,7 +216,7 @@ struct MovieDetailView: View {
                     .foregroundStyle(AppTheme.accent)
             }
             if let overview = detail.overview, !overview.isEmpty {
-                Text(String(localized: "Overview"))
+                Text("Overview")
                     .font(.title3.weight(.bold))
                     .foregroundStyle(AppTheme.primaryText)
                 Text(overview)
@@ -226,7 +236,7 @@ struct MovieDetailView: View {
 
     private func metadataSection(_ detail: MovieDetail) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(String(localized: "Details"))
+            Text("Details")
                 .font(.title3.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
 
@@ -259,7 +269,7 @@ struct MovieDetailView: View {
 
     private func castSection(_ credits: Credits) -> some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(String(localized: "Cast"))
+            Text("Cast")
                 .font(.title3.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
                 .padding(.horizontal, AppTheme.horizontalPadding)
@@ -280,7 +290,7 @@ struct MovieDetailView: View {
 
     private func trailerSection(_ trailer: Video) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(String(localized: "Trailer"))
+            Text("Trailer")
                 .font(.title3.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
             TrailerButton {
@@ -292,7 +302,7 @@ struct MovieDetailView: View {
 
     private func gallerySection(_ images: [MovieImage]) -> some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(String(localized: "Gallery"))
+            Text("Gallery")
                 .font(.title3.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
                 .padding(.horizontal, AppTheme.horizontalPadding)
@@ -319,7 +329,7 @@ struct MovieDetailView: View {
 
     private func reviewsSection(_ reviews: [Review]) -> some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(String(localized: "Reviews"))
+            Text("Reviews")
                 .font(.title3.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
 
@@ -354,7 +364,7 @@ struct MovieDetailView: View {
             )
             .frame(width: 72, height: 108)
             VStack(alignment: .leading, spacing: 6) {
-                Text(String(localized: "Collection"))
+                Text("Collection")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(AppTheme.accent)
                 Text(collection.name ?? "")

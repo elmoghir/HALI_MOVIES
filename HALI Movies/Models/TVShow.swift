@@ -20,7 +20,7 @@ struct TVShow: Identifiable, Codable, Hashable, Sendable {
     let originalLanguage: String?
 
     var displayTitle: String {
-        name ?? originalName ?? String(localized: "Untitled")
+        name ?? originalName ?? "Untitled"
     }
 
     var formattedYear: String? {

@@ -22,7 +22,7 @@ struct CastMember: Identifiable, Codable, Hashable, Sendable {
     let order: Int?
     let knownForDepartment: String?
 
-    var displayName: String { name ?? String(localized: "Unknown") }
+    var displayName: String { name ?? "Unknown" }
 }
 
 struct CrewMember: Identifiable, Codable, Hashable, Sendable {
@@ -32,7 +32,7 @@ struct CrewMember: Identifiable, Codable, Hashable, Sendable {
     let department: String?
     let profilePath: String?
 
-    var displayName: String { name ?? String(localized: "Unknown") }
+    var displayName: String { name ?? "Unknown" }
 }
 
 extension CastMember {

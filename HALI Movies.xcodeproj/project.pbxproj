@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0CF8CD91001AC5FD009C086C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0CF8CD92001AC5FD009C086C /* Kingfisher */; };
 		0CF8CD93001AC5FD009C086C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0CF8CD94001AC5FD009C086C /* Lottie */; };
+		0CF8D2F2301AD28B009C086C /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 0CF8D2F1301AD28B009C086C /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +36,22 @@
 		0CF8CD90001AC5FD009C086C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0CF8CD97001AC5FD009C086C /* Exceptions for "HALI Movies" folder in "HALI Movies" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0CF8CD5B301AC5FB009C086C /* HALI Movies */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0CF8CD5E301AC5FB009C086C /* HALI Movies */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0CF8CD97001AC5FD009C086C /* Exceptions for "HALI Movies" folder in "HALI Movies" target */,
+			);
 			path = "HALI Movies";
 			sourceTree = "<group>";
 		};
@@ -58,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CF8D2F2301AD28B009C086C /* GoogleMobileAds in Frameworks */,
 				0CF8CD91001AC5FD009C086C /* Kingfisher in Frameworks */,
 				0CF8CD93001AC5FD009C086C /* Lottie in Frameworks */,
 			);
@@ -123,6 +138,7 @@
 			packageProductDependencies = (
 				0CF8CD92001AC5FD009C086C /* Kingfisher */,
 				0CF8CD94001AC5FD009C086C /* Lottie */,
+				0CF8D2F1301AD28B009C086C /* GoogleMobileAds */,
 			);
 			productName = "HALI Movies";
 			productReference = 0CF8CD5C301AC5FB009C086C /* HALI Movies.app */;
@@ -209,6 +225,7 @@
 			packageReferences = (
 				0CF8CD95001AC5FD009C086C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0CF8CD96001AC5FD009C086C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				0CF8D2F0301AD28B009C086C /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0CF8CD5D301AC5FB009C086C /* Products */;
@@ -417,6 +434,7 @@
 				DEVELOPMENT_TEAM = 48G3HZ4AVD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HALI Movies/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Hali Cinema";
 				INFOPLIST_KEY_TMDBAPIKey = "$(TMDB_API_KEY)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -452,6 +470,7 @@
 				DEVELOPMENT_TEAM = 48G3HZ4AVD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HALI Movies/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Hali Cinema";
 				INFOPLIST_KEY_TMDBAPIKey = "$(TMDB_API_KEY)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -619,6 +638,14 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		0CF8D2F0301AD28B009C086C /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.13.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -631,6 +658,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0CF8CD96001AC5FD009C086C /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		0CF8D2F1301AD28B009C086C /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CF8D2F0301AD28B009C086C /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

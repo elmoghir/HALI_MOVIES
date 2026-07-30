@@ -42,8 +42,8 @@ struct FavoritesView: View {
         if viewModel.favorites.isEmpty {
             EmptyStateView(
                 systemImage: "heart",
-                title: String(localized: "No favorites yet"),
-                message: String(localized: "Save movies you love — they'll stay available offline.")
+                title: "No favorites yet",
+                message: "Save movies you love — they'll stay available offline."
             )
         } else {
             List {

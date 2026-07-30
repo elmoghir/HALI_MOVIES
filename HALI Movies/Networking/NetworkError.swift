@@ -22,32 +22,32 @@ enum NetworkError: LocalizedError, Equatable {
     var errorDescription: String? {
         switch self {
         case .invalidURL:
-            return String(localized: "Invalid request URL.")
+            return "Invalid request URL."
         case .invalidResponse:
-            return String(localized: "Unexpected server response.")
+            return "Unexpected server response."
         case .noInternet:
-            return String(localized: "No internet connection.")
+            return "No internet connection."
         case .timeout:
-            return String(localized: "The request timed out. Please try again.")
+            return "The request timed out. Please try again."
         case .cancelled:
-            return String(localized: "Request cancelled.")
+            return "Request cancelled."
         case .http(let statusCode):
             switch statusCode {
             case 401:
-                return String(localized: "Invalid API key. Check Secrets.xcconfig.")
+                return "Invalid API key. Check Secrets.xcconfig."
             case 404:
-                return String(localized: "Content not found.")
+                return "Content not found."
             case 429:
-                return String(localized: "Too many requests. Please wait a moment.")
+                return "Too many requests. Please wait a moment."
             default:
-                return String(localized: "Server error (\(statusCode)).")
+                return "Server error (\(statusCode))."
             }
         case .decoding(let detail):
-            return String(localized: "Failed to read data: \(detail)")
+            return "Failed to read data: \(detail)"
         case .api(let message):
             return message
         case .missingAPIKey:
-            return String(localized: "TMDb API key missing. Add it to Secrets.xcconfig.")
+            return "TMDb API key missing. Add it to Secrets.xcconfig."
         case .unknown(let message):
             return message
         }

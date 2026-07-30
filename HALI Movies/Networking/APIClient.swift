@@ -49,6 +49,10 @@ final class APIClient: APIClientProtocol, Sendable {
         var url = try endpoint.makeURL(baseURL: baseURL)
         if var components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
             var items = components.queryItems ?? []
+            // Force English metadata (genres, status, overviews) regardless of device language.
+            if !items.contains(where: { $0.name == "language" }) {
+                items.append(URLQueryItem(name: "language", value: "en-US"))
+            }
             items.append(URLQueryItem(name: "api_key", value: apiKey))
             components.queryItems = items
             guard let keyed = components.url else { throw NetworkError.invalidURL }
@@ -58,6 +62,7 @@ final class APIClient: APIClientProtocol, Sendable {
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("en-US", forHTTPHeaderField: "Accept-Language")
         for (key, value) in endpoint.headers {
             request.setValue(value, forHTTPHeaderField: key)
         }

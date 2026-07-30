@@ -57,15 +57,15 @@ struct HomeView: View {
                 }
             case .failed(let message):
                 ErrorStateView(
-                    title: String(localized: "Couldn't load home"),
+                    title: "Couldn't load home",
                     message: message,
                     onRetry: { Task { await viewModel.load() } }
                 )
             case .empty:
                 EmptyStateView(
                     systemImage: "film",
-                    title: String(localized: "Nothing to show"),
-                    message: String(localized: "Check your API key in Secrets.xcconfig and try again.")
+                    title: "Nothing to show",
+                    message: "Check your API key in Secrets.xcconfig and try again."
                 )
             default:
                 ScrollView {

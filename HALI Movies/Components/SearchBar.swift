@@ -7,7 +7,7 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text: String
-    var placeholder: String = String(localized: "Search movies")
+    var placeholder: String = "Search movies"
     var onVoiceTap: (() -> Void)? = nil
     var onSubmit: (() -> Void)? = nil
 

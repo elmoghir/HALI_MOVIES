@@ -22,6 +22,8 @@ final class AppEnvironment {
     let networkMonitor: NetworkMonitor
     let searchHistory: SearchHistoryStore
     let modelContainer: ModelContainer
+    let interstitialAds: InterstitialAdManager
+    let appOpenAds: AppOpenAdManager
 
     private(set) var favoritesRepository: FavoritesRepository
 
@@ -38,6 +40,8 @@ final class AppEnvironment {
         self.imageURLBuilder = ImageURLBuilder()
         self.networkMonitor = NetworkMonitor()
         self.searchHistory = SearchHistoryStore()
+        self.interstitialAds = InterstitialAdManager()
+        self.appOpenAds = AppOpenAdManager()
 
         let container: ModelContainer
         if let modelContainer {
@@ -63,6 +67,15 @@ final class AppEnvironment {
         } catch {
             // Defaults in ImageURLBuilder remain valid.
         }
+    }
+
+    /// Starts AdMob SDK, preloads ads, and prepares App Open.
+    func bootstrapAds() async {
+        await AdsBootstrap.start()
+        interstitialAds.preload()
+        // Load first, then request cold-start show (manager waits until filled).
+        appOpenAds.load()
+        appOpenAds.showOnColdStart()
     }
 
     /// In-memory environment for SwiftUI previews and unit tests.

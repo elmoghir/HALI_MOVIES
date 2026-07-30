@@ -44,7 +44,7 @@ struct FeaturedCarousel: View {
                         }
 
                         VStack(alignment: .leading, spacing: 10) {
-                            Text(String(localized: "Trending Today"))
+                            Text("Trending Today")
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(AppTheme.accent)
                                 .textCase(.uppercase)

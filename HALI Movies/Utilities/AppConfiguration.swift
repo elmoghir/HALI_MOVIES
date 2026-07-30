@@ -8,15 +8,22 @@
 import Foundation
 
 enum AppConfiguration {
-    /// TMDb v3 API key from InfopList / xcconfig. Replace Secrets.xcconfig before shipping.
+    /// TMDb v3 API key from Info.plist / xcconfig.
     static var tmdbAPIKey: String {
-        if let key = Bundle.main.object(forInfoDictionaryKey: Constants.InfoPlistKey.apiKey) as? String,
-           !key.isEmpty,
-           key != "YOUR_TMDB_API_KEY_HERE" {
+        let candidates: [String?] = [
+            Bundle.main.object(forInfoDictionaryKey: Constants.InfoPlistKey.apiKey) as? String,
+            Bundle.main.infoDictionary?[Constants.InfoPlistKey.apiKey] as? String,
+            ProcessInfo.processInfo.environment["TMDB_API_KEY"]
+        ]
+
+        for candidate in candidates {
+            guard let key = candidate?.trimmingCharacters(in: .whitespacesAndNewlines),
+                  !key.isEmpty,
+                  key != "YOUR_TMDB_API_KEY_HERE",
+                  !key.contains("$(") else { continue }
             return key
         }
-        // Development fallback — paste your key in Secrets.xcconfig for production builds.
-        return ProcessInfo.processInfo.environment["TMDB_API_KEY"] ?? ""
+        return ""
     }
 
     static var appVersion: String {

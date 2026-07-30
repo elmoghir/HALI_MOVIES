@@ -13,15 +13,29 @@ Hali Cinema does **not** stream video. It presents movie information, trailers, 
 ## Setup
 
 1. Copy `Secrets.example.xcconfig` → `Secrets.xcconfig`
-2. Paste your API key:
+2. Paste your keys:
 
 ```
-TMDB_API_KEY = your_key_here
+TMDB_API_KEY=your_tmdb_key_here
+ADMOB_APP_ID=ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy
+ADMOB_BANNER_ID=ca-app-pub-xxxxxxxxxxxxxxxx/zzzzzzzzzz
+ADMOB_INTERSTITIAL_ID=ca-app-pub-xxxxxxxxxxxxxxxx/zzzzzzzzzz
+ADMOB_APP_OPEN_ID=ca-app-pub-xxxxxxxxxxxxxxxx/zzzzzzzzzz
 ```
+
+While developing, keep Google’s **test** AdMob IDs (already in `Secrets.example.xcconfig`).
 
 3. Open `HALI Movies.xcodeproj` and run the **HALI Movies** scheme
 
 `Secrets.xcconfig` is gitignored. Never commit real keys.
+
+## Ads (AdMob)
+
+- **Banner** — bottom of all tabs (above the tab bar)
+- **App Open** — cold start + return from background
+- **Interstitial** — when leaving a movie detail (every 2nd dismiss, min 60s gap)
+
+Replace test unit IDs with your AdMob console IDs before App Store release.
 
 ## Architecture
 

@@ -8,7 +8,7 @@ import SwiftUI
 struct ErrorStateView: View {
     let title: String
     let message: String
-    var retryTitle: String = String(localized: "Try Again")
+    var retryTitle: String = "Try Again"
     var onRetry: (() -> Void)?
 
     var body: some View {

@@ -71,12 +71,12 @@ struct SearchView: View {
             case .empty:
                 EmptyStateView(
                     systemImage: "magnifyingglass",
-                    title: String(localized: "No results"),
-                    message: String(localized: "Try a different title, actor, or keyword.")
+                    title: "No results",
+                    message: "Try a different title, actor, or keyword."
                 )
             case .failed(let message):
                 ErrorStateView(
-                    title: String(localized: "Search failed"),
+                    title: "Search failed",
                     message: message,
                     onRetry: { viewModel.submit() }
                 )
@@ -91,12 +91,12 @@ struct SearchView: View {
             LazyVStack(alignment: .leading, spacing: 24) {
                 if !viewModel.history.isEmpty {
                     suggestionBlock(
-                        title: String(localized: "Recent"),
+                        title: "Recent",
                         items: viewModel.history,
                         onSelect: viewModel.selectSuggestion,
                         onDelete: viewModel.removeHistory,
                         trailing: {
-                            Button(String(localized: "Clear")) {
+                            Button("Clear") {
                                 viewModel.clearHistory()
                             }
                             .font(.caption.weight(.semibold))
@@ -106,7 +106,7 @@ struct SearchView: View {
                 }
 
                 suggestionBlock(
-                    title: String(localized: "Popular Searches"),
+                    title: "Popular Searches",
                     items: viewModel.popularSearches,
                     onSelect: viewModel.selectSuggestion,
                     onDelete: nil,

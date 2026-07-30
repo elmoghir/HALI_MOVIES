@@ -23,7 +23,7 @@ struct Movie: Identifiable, Codable, Hashable, Sendable {
 
     /// Display title with a safe fallback.
     var displayTitle: String {
-        title ?? originalTitle ?? String(localized: "Untitled")
+        title ?? originalTitle ?? "Untitled"
     }
 
     var formattedReleaseYear: String? {

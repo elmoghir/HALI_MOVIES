@@ -37,7 +37,7 @@ struct MovieDetail: Identifiable, Decodable, Sendable {
     let reviews: PagedResponse<Review>?
 
     var displayTitle: String {
-        title ?? originalTitle ?? String(localized: "Untitled")
+        title ?? originalTitle ?? "Untitled"
     }
 
     var formattedRuntime: String? {
